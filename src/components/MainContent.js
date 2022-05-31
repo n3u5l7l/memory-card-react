@@ -2,8 +2,13 @@ import { useState, useEffect } from "react"
 import Cards from "./Cards";
 
 export default function MainContent(props){
-    const [bestRecord, setBestRecord] = useState(0);
-
+    const [bestRecord, setBestRecord] = useState(localStorage.getItem("bestScore"));
+    useEffect(() => {
+        if(props.currLevel > Number(localStorage.getItem("bestScore"))){
+            localStorage.setItem("bestScore", `${props.currLevel-1}`);
+            setBestRecord(props.currLevel-1);
+        }
+    }, [props.currLevel])
     return(
         <div className="mainContent">
             <div className="score-level-container">
@@ -11,7 +16,7 @@ export default function MainContent(props){
                 <div className="scoreKeeper">Best: {bestRecord}</div>
             </div>
             <div className="tip">Click the pokemons!</div>
-            <Cards loadHandler = {props.loadHandler} cardInfos = {props.cardInfos} currLevel = {props.currLevel + 4}/>
+            <Cards currLevelHandler = {props.currLevelHandler} handleGameOver = {props.gameOver} loadHandler = {props.loadHandler} cardInfos = {props.cardInfos} currLevel = {props.currLevel + 4}/>
         </div>
     )
 }

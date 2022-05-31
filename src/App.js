@@ -10,12 +10,16 @@ function App() {
   const [cardInfoArr, setCardInfoArr] = useState([]);
   const [gameOver, setGameOver] = useState(false);
 
+  if(!localStorage.getItem("bestScore")){
+    localStorage.setItem("bestScore", "0");
+  }  
+
   useEffect(() => {
     if(needsFetch){return;}
 
     setNeedsFetch(true);
   }, [currLevel]);
-  
+
   useEffect(() => {
     if(!needsFetch){return;}
     const cardsArray = [...Array(currLevel+4)];
