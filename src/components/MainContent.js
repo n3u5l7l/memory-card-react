@@ -16,7 +16,7 @@ export default function MainContent(props){
                 <div className="scoreKeeper">Best: {bestRecord}</div>
             </div>
             <div className="tip">Click the pokemons!</div>
-            <Cards currLevelHandler = {props.currLevelHandler} handleGameOver = {props.gameOver} loadHandler = {props.loadHandler} cardInfos = {props.cardInfos} currLevel = {props.currLevel + 4}/>
+            <Cards currLevelHandler = {props.currLevelHandler} handleGameOver = {props.gameOver} loadHandler = {props.loadHandler} cardInfos = {props.cardInfos} totalCards = {props.currLevel + 4}/>
         </div>
     )
 }

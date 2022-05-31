@@ -6,7 +6,7 @@ export default function Cards(props){
     const [currPoke, setCurrPoke] = useState();
 
     useEffect(() => {
-        if(cardClick === props.currLevel){
+        if(cardClick === props.totalCards){
             props.currLevelHandler((prevLevel) => prevLevel + 1);
             return;
         }
@@ -25,9 +25,8 @@ export default function Cards(props){
     }
 
     function randomizeCards(){
-         for(let i  = 0; i < props.cardInfos.length; i++){
+        for(let i  = 0; i < props.cardInfos.length; i++){
             let randomSwap = Number(Math.ceil(Math.random() * 100) % props.cardInfos.length);
-
             let temp = props.cardInfos[i];
             props.cardInfos[i] = props.cardInfos[randomSwap];
             props.cardInfos[randomSwap] = temp;
