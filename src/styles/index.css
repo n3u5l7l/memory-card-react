@@ -151,6 +151,7 @@ body{
     -webkit-box-shadow: 0 0 10px #ccc; 
     box-shadow: 0 0 10px #ccc;
     border-radius: 10px;
+    cursor: pointer;
     transition: transform 0.3s ease-in-out;
 }
 
