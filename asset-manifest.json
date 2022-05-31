@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/memory-card-react/static/css/main.1f9d7006.css",
+    "main.js": "/memory-card-react/static/js/main.2fd8e815.js",
+    "index.html": "/memory-card-react/index.html",
+    "static/media/pokeball.svg": "/memory-card-react/static/media/pokeball.1e2e5730f2be5d64fa9b273c53423443.svg",
+    "main.1f9d7006.css.map": "/memory-card-react/static/css/main.1f9d7006.css.map",
+    "main.2fd8e815.js.map": "/memory-card-react/static/js/main.2fd8e815.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f9d7006.css",
+    "static/js/main.2fd8e815.js"
+  ]
+}
