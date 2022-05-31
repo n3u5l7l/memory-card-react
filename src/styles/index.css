@@ -167,3 +167,63 @@ img{
     width:100px;
     height:100px;
 }
+
+.gameOver-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    font-size: 30px;
+    font-weight: bolder;
+    flex:1;
+}
+
+.gameOver-button{
+    position: relative;
+    padding:10px;
+    width:150px;
+    height:50px;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    font-weight: bolder;
+    cursor: pointer;
+    opacity:0.6;
+    overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
+}
+.gameOver-button::before{
+    content: "";
+    position: absolute;
+    background-image: conic-gradient(#9c9c9c 20deg, transparent 120deg);
+    height: 150%;
+    width:150%;
+    left:-25%;
+    top:-25%;
+    border: none;
+    border-radius: 5px;
+    animation: rotation 1s linear infinite;
+}
+.gameOver-button::after{
+    content: "New Game";
+    height:94%;
+    width: 94%;
+    position: absolute;
+    background-color: white;
+    border-radius: 5px;
+    top:3%;
+    left:3%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes rotation {
+    100%{
+        transform: rotate(-360deg);
+    }
+}
+.gameOver-button:hover{
+    opacity: 1;
+}

@@ -57,7 +57,11 @@ function App() {
 
   let content;
   if(gameOver){
-    content = <div>Game OVER!!!</div>
+    content = <div className="gameOver-container">
+      <div className="gameOver-Text">Game Over!</div>
+      <div className="gameOver-score">Score: {currLevel-1}</div>
+      <button className="gameOver-button"></button>
+    </div>
   }
   else if (needsFetch){
     content = (
