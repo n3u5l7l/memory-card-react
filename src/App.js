@@ -55,12 +55,18 @@ function App() {
 
   }, [needsFetch, currLevel]) 
 
+  function restartGame(e){
+    setGameOver(false);
+    setNeedsFetch(true);
+    setcurrLevel(1);
+  }
+  
   let content;
   if(gameOver){
     content = <div className="gameOver-container">
       <div className="gameOver-Text">Game Over!</div>
       <div className="gameOver-score">Score: {currLevel-1}</div>
-      <button className="gameOver-button"></button>
+      <button className="gameOver-button" onClick={restartGame}></button>
     </div>
   }
   else if (needsFetch){
