@@ -8,16 +8,29 @@ function App() {
   const [needsFetch, setNeedsFetch] = useState(true);
   const [currLevel, setcurrLevel] = useState(1);
   const [cardInfoArr, setCardInfoArr] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
 
+  useEffect(() => {
+    if(needsFetch){return;}
+
+    setNeedsFetch(true);
+  }, [currLevel]);
+  
   useEffect(() => {
     if(!needsFetch){return;}
     const cardsArray = [...Array(currLevel+4)];
+    const duplicateCheck = {};
+
     async function getPoke(){
       const allPokemon = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0");
       const allPokemonResult = await allPokemon.json();
   
       let randomNum = Math.ceil(Math.random() * 1000);  
 
+      while(duplicateCheck[randomNum]){
+        randomNum = Math.ceil(Math.random() * 1000);  
+      }
+      duplicateCheck[randomNum] = true;
       const randomPoke = await fetch(`${allPokemonResult.results[randomNum].url}`, {mode: "cors"});
       const randomPokeResult = await randomPoke.json();
       
@@ -38,17 +51,23 @@ function App() {
 
   }, [needsFetch, currLevel]) 
 
-  const content = needsFetch? (
-    <div className="loadingScreen">
-      <PokeBall className="loadingBall" />
-      <div className="loadingWord">Loading...</div>
-    </div>
-    
-  ) : <>
+  let content;
+  if(gameOver){
+    content = <div>Game OVER!!!</div>
+  }
+  else if (needsFetch){
+    content = (
+      <div className="loadingScreen">
+        <PokeBall className="loadingBall" />
+        <div className="loadingWord">Loading Level {currLevel}...</div>
+      </div>)
+  }else{
+    content = <>
     <Header />
     <Line />
-    <MainContent currLevel = {currLevel} cardInfos = {cardInfoArr} loadHandler = {setNeedsFetch}/>
+    <MainContent currLevel = {currLevel} currLevelHandler = {setcurrLevel} cardInfos = {cardInfoArr} gameOver = {setGameOver} loadHandler = {setNeedsFetch}/>
   </>;
+  }
 
 
   return content;
